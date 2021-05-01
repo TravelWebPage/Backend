@@ -13,7 +13,7 @@ var connection = mysql.createConnection({
   connection.connect();
 
 let user:number;
-router.post('/', function(req, res, next){
+router.post('/', function(req:Request, res:Response, next:NextFunction){
     //회원가입
       console.log('login post');
       var name = req.body.name;
