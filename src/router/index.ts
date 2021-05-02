@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 
-const router = express.Router();
+const index = express.Router();
 
 let client = require('cheerio-httpcli');
 let urlType = require('url');
@@ -43,7 +43,7 @@ for (let index = 0; index < nature.length; index++) {
 
 let num = [1,7,9,10,11,13,15,17,19,20,22,23,26,28,30,35,36,38,40,41,42,44,45,48,49,54,55,56,63,64,66,67,70,72,73,74,75,88];
 
-request(url, function (error:Error, response:any, html:any){
+request(url, function (error:Error, response:ResponseType, html:HTMLAreaElement){
     let $ = cheerio.load(html);
     for (let index = 0; index < 91; index++) {
         for (let number = 0; number < num.length; number++) {
@@ -55,15 +55,32 @@ request(url, function (error:Error, response:any, html:any){
         //return item !== num && item !== undefined && item !== "";
         return item !== undefined && item !== "";
     });
-    //console.log(region);
+    console.log(region);
 
 });
 
-router.get('/', function(req:Request, res:Response, next:NextFunction) {
-    if(req.body.userIndex) { //가져온 변수가 있는 지 확인하여 불러오는 데이터를 바꾼다.
-      res.render('index', {region:region,weather:weather,tem:tem,nature:nature,travel:travel });
-    } else {
-      res.render('index', { region:region,weather:weather,tem:tem,nature:nature,travel:travel });
+request(url, function (erro:Error, response:ResponseType, html:HTMLAreaElement){
+  var $ = cheerio.load(html);
+  for (let index = 0; index < 91; index++) {
+    for (let number = 0; number < num.length; number++) {
+       if(index == num[number])
+       tem[index] = $(`#Container > div:nth-child(3) > div.kma_city_present > ul > li > table > tbody > tr:nth-child(${index}) > td:nth-child(3)`).text();
     }
+  }
+  tem = tem.filter(function(item) {
+    return item !== undefined && item !== "";
+  });
+  //console.log(tem);
+});
+
+index.get('/', function(req:Request, res:Response, next:NextFunction) {
+    // if(req.body.userIndex) { //가져온 변수가 있는 지 확인하여 불러오는 데이터를 바꾼다.
+    //   res.render('index', {region:region,weather:weather,tem:tem,nature:nature,travel:travel });
+    // } else {
+    //   res.render('index', { region:region,weather:weather,tem:tem,nature:nature,travel:travel });
+    // }
+    res.send("router in index")
   //  console.log(nature);
   });
+  
+export = index;

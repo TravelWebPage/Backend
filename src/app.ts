@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 import router from "./router/router";
+import index from "./router/index";
 
 const app = express();
 
@@ -13,13 +14,11 @@ var connection = mysql.createConnection({
   database:process.env.DB_DATABASE
 });
 
-connection.connect();
+//connection.connect();
 
-app.get("/", (request: Request, response: Response, next: NextFunction) => {
-  response.send("hello");
-});
 
 app.use("/router", router);
+app.use("/",index);
 
 app.listen(3000, () => {
   console.log("start");

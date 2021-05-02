@@ -55,5 +55,5 @@ router.post('/', function(req:Request, res:Response, next:NextFunction){
       });
       res.render('index', {userIndex:user}); //userIndex를 가지고 index페이지 보내기
   
-  })
+  });
   
