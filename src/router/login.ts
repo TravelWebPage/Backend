@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
   });
   connection.connect();
 
-let user:number;
+let user:number;/*
 router.post('/', function(req:Request, res:Response, next:NextFunction){
     //회원가입
       console.log('login post');
@@ -56,4 +56,4 @@ router.post('/', function(req:Request, res:Response, next:NextFunction){
       res.render('index', {userIndex:user}); //userIndex를 가지고 index페이지 보내기
   
   });
-  
+  */
