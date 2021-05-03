@@ -3,7 +3,7 @@ import router from "./router/router";
 import index from "./router/index";
 
 const app = express();
-
+const port = 3002;
 const mysql = require('mysql');
 
 var connection = mysql.createConnection({
@@ -20,6 +20,5 @@ var connection = mysql.createConnection({
 app.use("/router", router);
 app.use("/",index);
 
-app.listen(3000, () => {
-  console.log("start");
-});
+const hostname = "10.120.75.224";
+app.listen(port,hostname, () => console.log(`listening on port ${port}!`));
