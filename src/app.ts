@@ -14,7 +14,7 @@ var connection = mysql.createConnection({
   database:process.env.DB_DATABASE
 });
 
-//connection.connect();
+connection.connect();
 
 
 app.use("/router", router);
