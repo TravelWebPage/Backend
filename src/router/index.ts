@@ -17,63 +17,63 @@ let mountain = [ 4,6,8,9,13,14,15,17,18,20,21,22,27,29,30,31,34,35,36 ];
 const travel = [
   {
     where: '무등산',
-    url:'https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F24292337596AB3D51E',
+    url:'https://t1.daumcdn.net/cfile/tistory/99A98A335A01C54F19',
     envir: '산',
     explain: '무등산은 비할 데 없이 높고 큰 산 또는 등급을 매길 수 없을 정도의 고귀한 산 이라는 의미를 지니고 있다. 최고봉인 천왕봉을 중심으로 서석대·입석대가 있다.',
   },
   {
     where: '펭귄마을',
-    url:'https://pds.joins.com/news/component/joongboo/201802/07/1227836_1096803_3047.jpg',
+    url:'https://t1.daumcdn.net/cfile/tistory/996049335A01C54808',
     envir: '좋',
     explain: '전남 광주 양림동은 과거로 떠나는 타임머신 여행지다. 광주 근현대사 여행지로 인기가 높은 이곳엔 옛 추억을 불러일으키는 또 다른 시간 여행지가 있다. 이름도 재밌는 펭귄마을. 비록 펭귄은 살지 않지만 그보다 더 눈길을 끄는 잡다한 볼거리들이 가득하다. 시간 여행 속 색다른 여행지로 떠오르는 곳이다.',
   },
   {
     where: '대인시장',
-    url:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Gyeongpodae_Pavilion_Gangneung.JPG/1200px-Gyeongpodae_Pavilion_Gangneung.JPG',
+    url:'https://lh3.googleusercontent.com/proxy/1LUQY-42VMVC7RIgv4GRVJXZ0CIWJLijCpdVWyvlKN5IUgjU6v_DqEYMt5HWFX7bQyI4S5sVKwrmgn5tLjaiB7iJOz5UnAv4dRQ9mRCiWrZOuJU7eVLsDIEsTXJn-VgKiumeONwQRGHPVjw6Lizccy1tuIsUDrmRbnQ7eSzUQQgxLiznhFhdTcxQx42vaW1qFF8K4c1w2TwY92vWIXw66N0AvOGvWytfI2iqRy8jB0h2gZdhQZfTzo1kdVIVDqM2tirIJqThvSwOEJQx8tyCZPWK8J5nhdzUw12dWmvgqns',
     envir: '좋',
     explain: '현재 광주 대인시장은 예술가와 상인들이 함께 거주하는 공간이 되었고, 매주 토요일 저녁 예술야시장 등을 개최하며 많은 사람들을 매료시키고 있다.',
   },
   {
     where: '운천저수지',
-    url:'https://www.hanion.co.kr/news/photo/201809/8013_30381_421.jpg',
+    url:'https://t1.daumcdn.net/cfile/tistory/991976335A01C54E0C',
     envir: '바다',
     explain: '아름다운 풍경이 있는 저수지로, 산책하기 좋고 여러 종류의 꽃들이 피므로 꽃구경하기도 굉장히 좋다.',
   },
   {
     where: '518민주광장',
-    url:'https://joyfesta.kr/uploadedfiles/spot/2019/04/%EB%B3%B4%EB%A6%AC%EB%B0%AD_173600583.jpg',
+    url:'https://t1.daumcdn.net/cfile/tistory/99AA39335A01C55007',
     envir: '역사',
     explain: '이곳은 과거 민주화 항쟁의 전초기지였으며, 도청 앞 분수대를 연단 삼아 각종 집회가 열리기도 했다. 현재도 5.18 민주화운동과 관련된 많은 행사들이 이곳에서 거행되고 있으며, 역사의 현장을 직접 보기 위한 많은 관광객들이 방문하고 있다. ',
   },
   {
     where: '왕인박사유적지',
-    url:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn56dYSYN---KoOa3pbcWfP2tXMzh0g_7yqA&usqp=CAU',
+    url:'https://nimage.g-enews.com/phpwas/restmb_allidxmake.php?idx=5&simg=20191013112029027364e4869c12021110617783.jpg',
     envir: '역사',
-    explain: '읍성 또는 성곽도시는 마을이나 도시 같은 중대규모 거주지를 치안, 행정, 방위의 목적으로 방벽으로 둘러친 성곽형 방어시설이다.',
+    explain: '구림마을의 동쪽 문필봉 기슭에 자리잡고 있으며 왕인이 새롭게 조명되면서 그의 자취를 복원해 놓은 곳이다. 왕인박사의 탄생지인 성기동과 박사가 마셨다고 전해오고 있는 성천(聖泉)이 있으며, 탄생지 옆에는 유허비(遺墟碑)가 세워져 있다.',
   },
   {
     where: '월출산',
-    url:'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdf1jJq%2Fbtqu06craac%2FKKjj7c4Pt0Y84YxMDHfsyK%2Fimg.jpg',
+    url:'https://zznz.co.kr/wp-content/uploads/2020/05/A%EC%9B%94%EC%B6%9C%EC%82%B0-3.jpg',
     envir: '산',
-    explain: '남포미술관은 남도 화단의 작가들이 대거 참여하여 정열적인 예술혼이 가득 담긴 서정적이고 격조 높은 회화작품들을 상설전시하는 1종 미술관이다',
+    explain: '월출산은 전라남도 영암군과 강진군에 걸쳐있는 산이다. 1973년 1월 29일에 도립공원으로, 1988년 6월 11일에는 국립공원으로 지정되었다. 월출산이라는 이름은 달이 뜨는 산라는 의미이다',
   },
   {
     where: '도기 문화센터',
-    url:'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbzdTrB%2Fbtqu1bq2xA1%2FMfcCF0gCaKN1jH1lnuuBtk%2Fimg.jpg',
+    url:'https://cdn.yasinmoon.com/news/photo/200904/9931_11107_5727.jpg',
     envir: '좋',
-    explain: '해창만 간척지 제방 유휴토지에 오토갬핑장, 야외 공연장, 산책로 등을 조성하여 관광객에게 편안한 휴식공간을 제공하고자 해창만 간철지 공원을 조성하였다. 앞쪽으로는 담수호, 뒤쪽으로는 바다가 위치하고 있어 낚시하기에 좋은 장소이다.',
+    explain: '한국도기의 역사성을 보여주는 전시실과 영암의 붉은 황토를 이용하여 손으로 빚어 만드는 영암도기 생산공방이 있다. 특히 2003년 새롭게 연 전통고가마 영암요와 전통공방이 있으며 진정한 한국 전통 도기의 중심이 되고 있다',
   },
   {
-    where: '',
-    url:'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FelvTY4%2FbtquZGlsht8%2FxJ34kWAOn02L4LRq8KMfJk%2Fimg.jpg',
-    envir: 'good',
-    explain: '한국이 자체 기술로 인공위성을 우주 공간으로 쏘아올리기 위해 건설된 한국 최초의 우주발사체 발사기지인 나로우주센터와는 해상으로 15km 직선거리에 위치하여 나로호 발사 광경을 넓은 바다와 함께 볼 수 있다.',
+    where: '도갑사',
+    url:'http://here.busan.com/data/file/trip_tour/28408080_c0waAJTU_DSC04007.JPG',
+    envir: '역',
+    explain: '지금도 대웅전 뒤 천여 평의 빈터에는 주춧돌이 선명하게 군데군데 박혀 있고, 앞뜰에는 5m에 달하는 스님들이 마실 물을 담아 두는 석조의 크기가 도갑사의 옛 사세와 승려수를 말없이 전해주고 있습니다.',
   },
   {
-    where: '',
-    url:'http://tong.visitkorea.or.kr/cms/resource/20/1575820_image2_1.jpg',
-    envir: 'good',
-    explain: '광양 매화마을의 농가들은 산과 밭에 곡식 대신 모두 매화나무를 심어 매년 3월이 되면 하얗게 만개한 매화꽃이 마치 백설이 내린 듯, 또는 하얀 꽃구름이 골짜기에 내려앉은 듯 장관을 이룬다.',
+    where: '영암향교',
+    url:'https://lh3.googleusercontent.com/proxy/80-fq_PwkAgJyemaVGRR6Asnc88bsUUUmVhNwJlNaIebZLew-xxLS91Xp6IcN-yHNeMUi55NEnkRAx6goNM',
+    envir: '역',
+    explain: '전라남도 문화재자료 제126호로 지정되어 있으며, 운영은 전교(典校) 1명과 장의(掌議) 수명이 담당하고 있습니다',
   },
   {
     where: '금성관',
@@ -83,81 +83,81 @@ const travel = [
   },
   {
     where: '나주호',
-    url:'http://tong.visitkorea.or.kr/cms/resource/12/169612_image2_1.jpg',
+    url:'https://www.jnilbo.com//2019/05/16/2019051614123762318_l.jpg',
     envir: '바다',
-    explain: '해발 1,218m의 백운산을 주봉으로 하여 인공림과 천연림이 조화된 아름드리 소나무가 융단처럼 펼쳐져 있고 삼나무와 편백 숲속의 계곡은 감탄을 자아내게 한다.',
+    explain: '경관이 수려한 인공 호수, 나주호 * 영산강 종합개발계획의 하나로 만들어진 저수량 9,100만 톤의 인공호수. 주변경치가 뛰어나, 나주호와 인근 사찰들을 찾는 관광객이 늘고 있습니다.',
   },
   {
     where: '영산포 등대',
-    url:'https://wishbeen-seoul.s3.ap-northeast-2.amazonaws.com/post/1463917077569_IMG_5973.JPG',
+    url: 'http://www.naju.go.kr/build/images/module/smartour/smartour_tour/og_img_20161215130418_0157czz4qskj0flw1slu1lb0vy240e.jpg',
     envir: '바다',
-    explain: '전통정자와 목교등을 설치하여 물과 전통이 조화를 이루는 광주의 상징적 쉼터로 개발하여 1일 수백명의 이용객이 찾고있다.',
+    explain: '영산포 선창은 1960년대까지 각종 선박이 왕래하면서 많은 수산물들이 유통 되었습니다. 특히 산 홍어와 추자 멸치젓배가 왕래해 지금도 선창가에는 어물전들이 남아서 그 옛날의 정취를 느끼게 합니다.',
   },
   {
-    where: '금성산',
-    url:'https://t1.daumcdn.net/cfile/tistory/99DD16335A01C54B2D',
-    envir: '산',
-    explain: '광주예술의 거리는 예향 광주의 전통을 계승 발전시키기 위해 조성되었다. 서울 인사동처럼 갤러리와 화방, 표구점, 골동품점, 소극장, 고서점, 전통 찻집 등이 뺴곡히 들어서 있다.',
+    where: '금성관',
+    url: 'https://img1.yna.co.kr/etc/inner/KR/2019/10/25/AKR20191025046200005_01_i_P4.jpg',
+    envir: '좋',
+    explain: '일제 강점기 이후 군청 건물로 사용해오면서 원형이 파괴되어 1976년에서1977년 사이 완전해체 복원하였습니다. 현재 전라남도 유형문화재 제 2호로 지정되어 있으며, 곁에는 삼층석탑(보물50호), 사마교비, 금성토평비, 목사선정비 등의 문화재가 있습니다.',
   },
   {
     where: '영산나루마을',
-    url:'https://t1.daumcdn.net/cfile/tistory/99A98A335A01C54F19',
+    url: 'http://tong.visitkorea.or.kr/cms/resource/49/2516449_image2_1.jpg',
     envir: '좋',
-    explain: '광주의 무등산은 25년만에 21번째 국립공원으로 2013년 지정되었다.정상부근의 서석대와 입석대 등 거대한 주상절리 기둥들은 독특한 경관을 만들어낸다.',
+    explain: '영산강과 인접해 있고 해발 150m 되는 마을 뒷산에 오르면 영산강이 유유히 흐르는 아름다운 모습을 한눈에 볼 수 있는 전형적인 농촌마을입니다. 특히 가을철 나주평야의 황금물결은 어디에서도 볼 수 없는 풍요로움을 맛볼 수 있고, 또한 일제 강점기 금광을 대발했던 금광굴은 여름철 시원하고 겨울철 따뜻하여 휴식 공간으로 안성맞춤입니다.'
   },
   {
     where: '죽녹원',
-    url:'http://tong.visitkorea.or.kr/cms/resource/59/1603759_image2_1.jpg',
+    url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile2.uf.tistory.com%2Fimage%2F99E1E33C5ED2AEBA04BC8F',
     envir: '좋',
-    explain: '은파의 특성과 이미지를 반영한 꽃잎 형태의 분수로 호수와 물빛다리를 연계한 아름답고 환상적인 분수를 연출하고 있다. 분수형태는 꽃잎 형태로 그 아름다움을 더한다.',
+    explain: '산책로 조성이 잘되어 있어서 바람에 흔들리는 대나무 소리를 들으면서 산책하기 좋습니다. 죽녹원 안에는 한옥카페가 있어서 휴식하기에 좋고, 한옥숙박도 가능합니다. 숙박하기 위해서는 인터넷 죽녹원 홈페이지에서 사전 예약해야 합니다. '
   },
   {
     where: '메타세콰이어가로수길',
-    url:'https://lh3.googleusercontent.com/proxy/fkaoA50tTyNge2DXBpNotIF2L2d7b_Z3AyanFjwz5evn-7cLnhAxun0lJk3WDPRF6Zs_irE4psRUXARg7nCD0NSpVvDX8W3UH7QnY1CJ6hWxi8jHtHP9',
+    url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile23.uf.tistory.com%2Fimage%2F99D8AC335ED2AEB704A6B7',
     envir: '좋',
-    explain: '선유도의 동쪽에 위치한 섬으로 면적 4.25㎢, 해안선의 길이 16.5㎞로 고군산군도의 24개 가운데 가장 큰 섬이다. 개막이, 바지락캐기, 낚시 등 체험관광이 활성화되어 있다.',
+    explain: '담양에 가면 꼭 가봐야할 곳 중 하나는 메타세콰이어 가로수길입니다. 양쪽으로 뻥 뚫린 가로수길로 초록빛 동굴같은 길을 지나가게 됩니다. 가로수길의 총 길이는 8.5km로 도로 사이로 양쪽 길가에 높이 10~20m의 메타세콰이어가 심어져 있습니다.'
   },
   {
     where: '소쇄원',
-    url:'http://tong.visitkorea.or.kr/cms/resource/16/1603816_image2_1.jpg',
+    url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile3.uf.tistory.com%2Fimage%2F99E18B3C5ED2AEB904120F',
     envir: '좋',
-    explain: '금강철새조망대는 자연이 준 천혜의 보고 금강호를 배경으로 세계인이 공유하고자 국민생태관광지로 구성된 자연친화적 생태공원이다.',
+    explain: '정유재란때 당시의 건물은 소실되었으나 다시 복원되었습니다. 세속을 떠난 선비들이 자연에서 공부하고 수련한 곳으로 소나무와 대나무의 멋, 바위 위로 흐르는 개울물이 소박하면서도 인상적입니다. 정자에 앉아 흐르는 물소리를 들으며 사색에 잠겨보세요. '
   },
   {
     where: '금성산성',
-    url:'http://tong.visitkorea.or.kr/cms/resource/22/1207222_image2_1.jpg',
+    url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile5.uf.tistory.com%2Fimage%2F99D7FC335ED2AEB5040159',
     envir: '좋',
-    explain: '장유대청계곡은 불모산 산자락에 양갈래로 형성된 6km의 긴계곡으로 산림이 울창하고 맑은 물이 폭포를 이루는 등 자연경관이 빼어난 곳이다.',
+    explain: '금성산성은 순창과 경계를 이루는 금성산(603m)에 있는 길이 3km 가까운 산성입니다. 호남 3대 산성 중 하나로고려시대에 건축되어졌다고 전해지는데 임진왜란때는 의병의 거점이 되었고, 동학농민운동때 혈전이 벌어진 장소로 각종 시설이 불타고 동,서,남,북문의 터만 남아 있습니다.'
   },
   {
     where: '메타프로방스',
-    url:'http://tong.visitkorea.or.kr/cms/resource/61/1611261_image2_1.jpg',
+    url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile8.uf.tistory.com%2Fimage%2F99D8B0335ED2AEB804ECB6',
     envir: '좋',
-    explain: '왕릉은 선조 13년(1580)에 영남관찰사 허엽이 능을 지금의 모습으로 단장하였다.능의 경내에는 수로왕, 수로왕비의 신위를 모신 숭선전을 비롯하여 안향각, 전사청, 제기고 등 여러 건물과 신도비, 공적비 등 석조물이 있다.',
+    explain: '메타프로방스는 메타스퀘이어 가로수길 바로 옆에 있는 관광지로 유명한 프랑스의 도시 프로방스를 표방한 곳입니다. 식당, 쇼핑센터, 카페, 팬션 등이 모여있는 곳으로 다양하고 독특한 유럽풍의 가옥들로 이루어져서 이국적인 느낌이 물씬 납니다.'
   },
   {
     where: '한옥마을',
-    url:'http://tong.visitkorea.or.kr/cms/resource/50/1611250_image2_1.jpg',
+    url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile22.uf.tistory.com%2Fimage%2F99D7963E5F1720A81C1F82',
     envir: '역사',
-    explain: '한옥마을은 풍남동 일대에 700여채의 한옥이 군락을 이루고 있는 국내 최대 규모의 전통 한옥촌이며, 1910년에 조성되기 시작해서 1977년도에 한옥보전지구로 지정되었습니다. 현재 20여개의 문화시설이 산재해 있습니다. 전주경기전, 조선 태조어진, 하바미, 전주 전동성당 등 볼거리들이 가득합니다.',
+    explain: '전주하면 떠오르는 곳은 바로 한옥마을입니다. 전주를 대표하는 관광지로 한옥 건물과 여러 유서깊은 건물들이 있습니다. 연 1천만명 이상의 관광객이 다녀가는 곳으로, 전주를 가면 필히 방문해야 하는 곳입니다. '
   },
   {
     where: '전주 향교',
-    url: 'https://t1.daumcdn.net/cfile/blog/2145553554071A741D',
+    url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile22.uf.tistory.com%2Fimage%2F994CE13F5F17201B1E1544',
     envir: '좋',
-    explain: '가천다랭이마을 체험은 남해인의 억척스러움이 고스란히 묻어있는 다랭이 논을 돌아보는 것으로 시작한다. 들쭉날쭉 제 멋대로 생긴 논들이지만 그 사이사이로 산뜻한 산책로와 전망대가 마련돼 있어 편안히 돌아볼 수 있다.',
+    explain: '전주 한옥마을의 대표적인 유적지입니다. 전주항교는 고려 공민왕 3년(1354년)에 지어졌으며 태종 10년(1410년) 태조 영정을 봉안할 경기전(慶基殿) 건립으로 부(府) 서쪽 화산동으로 옮겨졌다가 선조 36년(1603년) 관찰사 장만의 상계에 의하여 현재의 위치로 재이건하였습니다.'
   },
   {
     where: '전동성당 풍남문',
-    url: 'https://mblogthumb-phinf.pstatic.net/20160716_73/namhaestorys_1468665280052iAk7X_JPEG/IMG_3470.jpg?type=w800',
+    url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile28.uf.tistory.com%2Fimage%2F99EB593F5F17201A1B99BE',
     envir: '좋',
-    explain: '조국 근대화와 경제발전에 헌신한 독일 거주 교포들의 정착생활 지원과 조국의 따뜻한 정을 느낄 수 있는 삶의 터전을 마련하기 위해 개발되었다.',
+    explain: '전동성당은 한옥마을에 위치한 호남 전체에서 최초로 세워진 로마네스크 양식의 건물입니다. 1908년 착공이 진행되어 1914년에 완공되었습니다. 전동성당은 풍남문이 있던 바로 그 자리에 세워진 성당으로 순교지를 보존하고 있는 신앙의 요람입니다.'
   },
   {
     where: '자만벽화마을',
-    url: 'https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2661BC365626190011',
+    url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile5.uf.tistory.com%2Fimage%2F9939F13A5F1721351E7C58',
     envir: '좋',
-    explain: '소금강 또는 남해금강이라 불리는 삼남 제일의 명산. 금산(704m)은 한려해상국립공원의 유일한 산악공원으로 온통 기암괴석들로 뒤덮인 38경이 절경을 이루고 있다.',
+    explain: '한옥마을 옆 벽화마을로 주말이면 인증샷을 찍으러오는 관광객들로 북적입니다. 주민들 거주지이기도 하며, 곳곳에 카페가 있습니다. 산비탈에 위치해서 전주시내를 내려다 볼 수 있어요. 자만벽화마을에서 가장 인기 있는 벽화는 일본 지브리 스튜디오의 명작 ‘센과 치히로의 행방불명’과 ‘이웃집 토토로’ 벽화입니다.'
   }
 ];
 
@@ -217,12 +217,12 @@ request(url, function (error:Error, response:ResponseType, html:HTMLAreaElement)
   weather = weather.filter(function(item) {
     return item !== undefined && item !== "";
   });
-  console.log(weather);
+  //console.log(weather);
 });
 
 
 index.get('/', function(req:Request, res:Response, next:NextFunction) {
-  res.json({region:region});
+  res.json({travel:travel,mountain:mountain});
 });
   
 export = index;
