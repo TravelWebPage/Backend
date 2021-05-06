@@ -10,9 +10,9 @@ let param = {};
 let region:string[] = new Array(91);
 let weather:string[] = new Array(91);
 let tem:string[] = new Array(91);
-
+let region_num:number[] = [ 10,22,65,43,69 ];
 let nature = new Array(38);
-let mountain = [ 4,6,8,9,13,14,15,17,18,20,21,22,27,29,30,31,34,35,36 ];
+//let mountain = [ 4,6,8,9,13,14,15,17,18,20,21,22,27,29,30,31,34,35,36 ];
 
 const travel = [
   {
@@ -160,7 +160,7 @@ const travel = [
     explain: '한옥마을 옆 벽화마을로 주말이면 인증샷을 찍으러오는 관광객들로 북적입니다. 주민들 거주지이기도 하며, 곳곳에 카페가 있습니다. 산비탈에 위치해서 전주시내를 내려다 볼 수 있어요. 자만벽화마을에서 가장 인기 있는 벽화는 일본 지브리 스튜디오의 명작 ‘센과 치히로의 행방불명’과 ‘이웃집 토토로’ 벽화입니다.'
   }
 ];
-
+/*
 for (let index = 0; index < nature.length; index++) {
     let flag = 0;
     let element = nature[index];
@@ -174,7 +174,9 @@ for (let index = 0; index < nature.length; index++) {
       else nature[index] = '바다';
     }
     flag = 0;
-}
+}*/
+
+
 
 let num = [1,7,9,10,11,13,15,17,19,20,22,23,26,28,30,35,36,38,40,41,42,44,45,48,49,54,55,56,63,64,66,67,70,72,73,74,75,88];
 
@@ -222,7 +224,7 @@ request(url, function (error:Error, response:ResponseType, html:HTMLAreaElement)
 
 
 index.get('/', function(req:Request, res:Response, next:NextFunction) {
-  res.json({travel:travel,mountain:mountain});
+  res.json({travel:travel});
 });
   
 export = index;
