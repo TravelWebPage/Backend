@@ -1,9 +1,13 @@
 import express, { Request, Response, NextFunction } from "express";
 import router from "./router/router";
 import index from "./router/index";
+import axios from "axios";
+import cors from 'cors'
 
 const app = express();
-const port = 3002;
+const port = 3000;
+
+/*
 const mysql = require('mysql');
 
 require('dotenv').config();
@@ -17,10 +21,14 @@ var connection = mysql.createConnection({
 });
 
 connection.connect();
+*/
+
+app.use((cors()));
+
 
 
 app.use("/router", router);
 app.use("/",index);
 
 const hostname = "10.120.75.224";
-app.listen(port,hostname, () => console.log(`listening on port ${port}!`));
+app.listen(port, () => console.log(`listening on port ${port}!`));
