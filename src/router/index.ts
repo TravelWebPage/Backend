@@ -1,3 +1,4 @@
+import axios from "axios";
 import express, { Request, Response, NextFunction } from "express";
 
 const index = express.Router();
@@ -230,6 +231,11 @@ index.get('/', function(req:Request, res:Response, next:NextFunction) {
 index.post('/postdata/indexpage', function(req:Request, res:Response, next:NextFunction) {
   res.json({travel:travel});
 });
+
+axios.post('/api', { travel: travel })
+  .then(res => {
+  console.log("axios post success");  
+  })
 
   
 export = index;
