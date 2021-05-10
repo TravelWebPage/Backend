@@ -226,5 +226,10 @@ request(url, function (error:Error, response:ResponseType, html:HTMLAreaElement)
 index.get('/', function(req:Request, res:Response, next:NextFunction) {
   res.json({travel:travel});
 });
+
+index.post('/postdata/indexpage', function(req:Request, res:Response, next:NextFunction) {
+  res.json({travel:travel});
+});
+
   
 export = index;
