@@ -25,10 +25,8 @@ connection.connect();
 
 app.use((cors()));
 
-
-
 app.use("/router", router);
 app.use("/",index);
 
 const hostname = "10.120.75.224";
-app.listen(port, () => console.log(`listening on port ${port}!`));
+app.listen(port,hostname, () => console.log(`listening on port ${port}!`));

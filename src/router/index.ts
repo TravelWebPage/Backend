@@ -6,7 +6,7 @@ const index = express.Router();
 let cheerio = require('cheerio');
 let request = require('request');
 let url = "http://www.kweather.co.kr/kma/kma_city.html";
-let param = {};
+let param = {}; 
 
 let region:string[] = new Array(91);
 let weather:string[] = new Array(91);
@@ -228,7 +228,8 @@ index.get('/', function(req:Request, res:Response, next:NextFunction) {
   res.json({travel:travel});
 });
 
-index.post('/postdata/indexpage', function(req:Request, res:Response, next:NextFunction) {
+
+index.get('/postdata/indexpage', function(req:Request, res:Response, next:NextFunction) {
   res.json({travel:travel});
 });
 
