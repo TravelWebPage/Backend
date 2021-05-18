@@ -6,11 +6,15 @@ const index = express.Router();
 let cheerio = require('cheerio');
 let request = require('request');
 let url = "http://www.kweather.co.kr/kma/kma_city.html";
+let event_url = "https://www.data.go.kr/data/15013104/standard.do";
+
 let param = {}; 
 
 let region:string[] = new Array(91);
 let weather:string[] = new Array(91);
 let tem:string[] = new Array(91);
+let event:string[] = new Array(500);
+let data_cut:string;
 let region_num:number[] = [ 10,22,65,43,69 ];
 let nature = new Array(38);
 //let mountain = [ 4,6,8,9,13,14,15,17,18,20,21,22,27,29,30,31,34,35,36 ];
@@ -77,7 +81,7 @@ const travel = [
     explain: '전라남도 문화재자료 제126호로 지정되어 있으며, 운영은 전교(典校) 1명과 장의(掌議) 수명이 담당하고 있습니다',
   },
   {
-    where: '금성관',
+    where: '섬진강가',
     url:'http://tong.visitkorea.or.kr/cms/resource/82/1606782_image2_1.jpg',
     envir: '좋',
     explain: '수십년 묵은 매화나무 아래 청보리가 바람을 타는 농원 중턱에 서면 굽이져 흐르는 섬진강너머 하동쪽 마을이 동양화처럼 내려다보인다.섬진강가의 산마다 매화나무가 많이 자라 저마다 꽃을 피워내지만 광양시 도사리 일대의 청매실농원만큼 풍성한 곳도 드물다.',
@@ -215,14 +219,28 @@ request(url, function (error:Error, response:ResponseType, html:HTMLAreaElement)
   var $ = cheerio.load(html);
   for (let index = 1; index < 91; index++) {
        weather[index] = $(`#Container > div:nth-child(3) > div.kma_city_present > ul > li > table > tbody > tr:nth-child(${index}) > td:nth-child(2)`).text();
-
   }
   weather = weather.filter(function(item) {
     return item !== undefined && item !== "";
   });
-  //console.log(weather);
+  console.log(weather);
 });
 
+
+request(event_url, function (error:Error, response:ResponseType, html:HTMLAreaElement){
+  var $ = cheerio.load(html);
+  for (let index = 1; index < 499; index++) {
+    data_cut = $(`#tab_layer_grid > div.table-responsive.standard-data-table.boxed-table > table > tbody > tr:nth-child(${index}) > td:nth-child(1)`).text();
+    data_cut = data_cut.replace(/\n\t\t\t\t\t\t\t\t\t\t\t\t/,"");
+    data_cut = data_cut.replace(/\n\t\t\t\t\t\t\t\t\t\t\t/,"");
+    event[index] = data_cut;
+
+  }
+  // event = event.filter(function(item) {
+  //   return item !== undefined && item !== "";
+  // });
+  console.log(event);
+});
 
 index.get('/', function(req:Request, res:Response, next:NextFunction) {
   res.json({travel:travel});
