@@ -6,15 +6,21 @@ const index = express.Router();
 let cheerio = require('cheerio');
 let request = require('request');
 let url = "http://www.kweather.co.kr/kma/kma_city.html";
-let event_url = "https://www.data.go.kr/data/15013104/standard.do";
+let event_url = "http://japong.com/korea/festival_jr.htm";
 
 let param = {}; 
 
 let region:string[] = new Array(91);
 let weather:string[] = new Array(91);
 let tem:string[] = new Array(91);
-let event:string[] = new Array(500);
+let event = new Array();
 let data_cut:string;
+let data:string;
+
+let e_region:string;
+let e_when:string;
+let e_where:string;
+
 let region_num:number[] = [ 10,22,65,43,69 ];
 let nature = new Array(38);
 //let mountain = [ 4,6,8,9,13,14,15,17,18,20,21,22,27,29,30,31,34,35,36 ];
@@ -223,22 +229,40 @@ request(url, function (error:Error, response:ResponseType, html:HTMLAreaElement)
   weather = weather.filter(function(item) {
     return item !== undefined && item !== "";
   });
-  console.log(weather);
+  //console.log(weather);
 });
 
+/*
+request(event_url, function (error:Error, response:ResponseType, html:HTMLAreaElement){
+  var $ = cheerio.load(html);
+  for (let i = 1; i < 499; i++) {
+      data_cut = $(`#tab_layer_grid > div.table-responsive.standard-data-table.boxed-table > table > tbody > tr:nth-child(${i}) > td:nth-child(1)`).text();
+      data_cut = data_cut.replace(/\n\t\t\t\t\t\t\t\t\t\t\t\t/,"");
+      data_cut = data_cut.replace(/\n\t\t\t\t\t\t\t\t\t\t\t/,"");
+      data = $(`#tab_layer_grid > div.table-responsive.standard-data-table.boxed-table > table > tbody > tr:nth-child(${i}) > td:nth-child(3)`).text();
+      data = data.replace(/\n\t\t\t\t\t\t\t\t\t\t\t\t/,"");
+      data = data.replace(/\n\t\t\t\t\t\t\t\t\t\t\t/,"");
+      event.push({region:data_cut, when:data});
+      
+  }
+  event = event.filter(function(item) {
+   return item !== undefined && item !== "";
+  });
+  console.log(event);
+});
+*/
 
 request(event_url, function (error:Error, response:ResponseType, html:HTMLAreaElement){
   var $ = cheerio.load(html);
-  for (let index = 1; index < 499; index++) {
-    data_cut = $(`#tab_layer_grid > div.table-responsive.standard-data-table.boxed-table > table > tbody > tr:nth-child(${index}) > td:nth-child(1)`).text();
-    data_cut = data_cut.replace(/\n\t\t\t\t\t\t\t\t\t\t\t\t/,"");
-    data_cut = data_cut.replace(/\n\t\t\t\t\t\t\t\t\t\t\t/,"");
-    event[index] = data_cut;
-
+  for (let i = 2; i < 16; i++) {
+      e_region = $(`#wrap > article > table > tbody > tr:nth-child(${i}) > td:nth-child(1)`).text();
+      e_when = $(`#wrap > article > table > tbody > tr:nth-child(${i}) > td:nth-child(2)`).text();
+      e_where = $(`#wrap > article > table > tbody > tr:nth-child(${i}) > td:nth-child(3)`).text();
+      event.push({region:e_region, when:e_when,where:e_where});
   }
-  // event = event.filter(function(item) {
-  //   return item !== undefined && item !== "";
-  // });
+  event = event.filter(function(item) {
+    return item !== undefined && item !== "";
+  });
   console.log(event);
 });
 
