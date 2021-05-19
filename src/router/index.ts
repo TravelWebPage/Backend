@@ -6,20 +6,17 @@ const index = express.Router();
 let cheerio = require('cheerio');
 let request = require('request');
 let url = "http://www.kweather.co.kr/kma/kma_city.html";
-let event_url = "http://japong.com/korea/festival_jr.htm";
+let event_url = "https://korean.visitkorea.or.kr/list/fes_list.do?choiceTag=%EA%B3%B5%EC%97%B0/%ED%96%89%EC%82%AC&choiceTagId=ca662dcd-d7f0-11e8-bff9-02001c6b0001";
+
 
 let param = {}; 
 
 let region:string[] = new Array(91);
 let weather:string[] = new Array(91);
 let tem:string[] = new Array(91);
-let event = new Array();
 let data_cut:string;
 let data:string;
-
-let e_region:string;
-let e_when:string;
-let e_where:string;
+let event_data:string[] = new Array(91)
 
 let region_num:number[] = [ 10,22,65,43,69 ];
 let nature = new Array(38);
@@ -171,6 +168,144 @@ const travel = [
     explain: '한옥마을 옆 벽화마을로 주말이면 인증샷을 찍으러오는 관광객들로 북적입니다. 주민들 거주지이기도 하며, 곳곳에 카페가 있습니다. 산비탈에 위치해서 전주시내를 내려다 볼 수 있어요. 자만벽화마을에서 가장 인기 있는 벽화는 일본 지브리 스튜디오의 명작 ‘센과 치히로의 행방불명’과 ‘이웃집 토토로’ 벽화입니다.'
   }
 ];
+
+const event = [
+  {
+    region: '영암',
+    name: '영암 왕인 문화 축제',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+  {
+    region: '광주',
+    name: '광주 비엔날레',
+    when: '5월',
+    explain:'광주의 문화예술 전통과 5ㆍ18광주민중항쟁 이후 국제사회 속에 널리 알려지기 시작한 광주 민주정신을 새로운 문화적 가치로 승화시키기 위하여 창설되었다.',
+    img:'data:image/jpeg;base64,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'
+  },
+  {
+    region: '광주',
+    name: '광주 민속문화 체험마당',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+  {
+    region: '광주',
+    name: '광주 세계 김치 축제',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+  {
+    region: '광주',
+    name: '광주 프린지페스티벌',
+    when: '11월',
+    explain:'2016년에 처음 시작된 광주프린지페스티벌은 장르나 형식, 정해진 틀에 얽매이지 않고 아마추어·전문 예술인과 시민이 자유롭게 만들어 가는 토요일의 유쾌한 문화난장, 광주 대표 브랜드광장문화축제이다.',
+    img:'http://tong.visitkorea.or.kr/cms/resource/75/2487975_image2_1.jpg'
+  },
+  {
+    region: '광주',
+    name: '광주 ACE Fair',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+  {
+    region: '광주',
+    name: '광주 도자기 축제',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+  {
+    region: '광주',
+    name: '광주 문화재 야행',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+  {
+    region: '광주',
+    name: '광주 왕인 문화 축제',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+  {
+    region: '광주',
+    name: '광주 왕인 문화 축제',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+  {
+    region: '광주',
+    name: '광주 왕인 문화 축제',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+  {
+    region: '광주',
+    name: '광주 왕인 문화 축제',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+  {
+    region: '영암',
+    name: '영암 왕인 문화 축제',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+  {
+    region: '영암',
+    name: '영암 왕인 문화 축제',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+  {
+    region: '영암',
+    name: '영암 왕인 문화 축제',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+  {
+    region: '영암',
+    name: '영암 왕인 문화 축제',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+  {
+    region: '영암',
+    name: '영암 왕인 문화 축제',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+  {
+    region: '영암',
+    name: '영암 왕인 문화 축제',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+  {
+    region: '영암',
+    name: '영암 왕인 문화 축제',
+    when: '4월',
+    explain:'왕인박사춘향대제, 왕인박사일본가오, 솟대-하늘의 교신, 배움의 등 달기, 구림에서 아스카로 부는 바람, 민속공연',
+    img:'https://enewstoday.co.kr/news/photo/202001/1359179_422326_2148.jpg'
+  },
+
+]
+
 /*
 for (let index = 0; index < nature.length; index++) {
     let flag = 0;
@@ -232,40 +367,6 @@ request(url, function (error:Error, response:ResponseType, html:HTMLAreaElement)
   //console.log(weather);
 });
 
-/*
-request(event_url, function (error:Error, response:ResponseType, html:HTMLAreaElement){
-  var $ = cheerio.load(html);
-  for (let i = 1; i < 499; i++) {
-      data_cut = $(`#tab_layer_grid > div.table-responsive.standard-data-table.boxed-table > table > tbody > tr:nth-child(${i}) > td:nth-child(1)`).text();
-      data_cut = data_cut.replace(/\n\t\t\t\t\t\t\t\t\t\t\t\t/,"");
-      data_cut = data_cut.replace(/\n\t\t\t\t\t\t\t\t\t\t\t/,"");
-      data = $(`#tab_layer_grid > div.table-responsive.standard-data-table.boxed-table > table > tbody > tr:nth-child(${i}) > td:nth-child(3)`).text();
-      data = data.replace(/\n\t\t\t\t\t\t\t\t\t\t\t\t/,"");
-      data = data.replace(/\n\t\t\t\t\t\t\t\t\t\t\t/,"");
-      event.push({region:data_cut, when:data});
-      
-  }
-  event = event.filter(function(item) {
-   return item !== undefined && item !== "";
-  });
-  console.log(event);
-});
-*/
-
-request(event_url, function (error:Error, response:ResponseType, html:HTMLAreaElement){
-  var $ = cheerio.load(html);
-  for (let i = 2; i < 16; i++) {
-      e_region = $(`#wrap > article > table > tbody > tr:nth-child(${i}) > td:nth-child(1)`).text();
-      e_when = $(`#wrap > article > table > tbody > tr:nth-child(${i}) > td:nth-child(2)`).text();
-      e_where = $(`#wrap > article > table > tbody > tr:nth-child(${i}) > td:nth-child(3)`).text();
-      event.push({region:e_region, when:e_when,where:e_where});
-  }
-  event = event.filter(function(item) {
-    return item !== undefined && item !== "";
-  });
-  console.log(event);
-});
-
 index.get('/', function(req:Request, res:Response, next:NextFunction) {
   res.json({travel:travel});
 });
@@ -274,11 +375,6 @@ index.get('/', function(req:Request, res:Response, next:NextFunction) {
 index.get('/postdata/indexpage', function(req:Request, res:Response, next:NextFunction) {
   res.json({travel:travel});
 });
-
-axios.post('/api', { travel: travel })
-  .then(res => {
-  console.log("axios post success");  
-  })
 
   
 export = index;
