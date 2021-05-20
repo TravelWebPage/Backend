@@ -1,5 +1,6 @@
 import axios from "axios";
 import express, { Request, Response, NextFunction } from "express";
+import { XMLHttpRequest } from 'xmlhttprequest-ts';
 
 const index = express.Router();
 
@@ -8,6 +9,7 @@ let request = require('request');
 let url = "http://www.kweather.co.kr/kma/kma_city.html";
 let event_url = "https://korean.visitkorea.or.kr/list/fes_list.do?choiceTag=%EA%B3%B5%EC%97%B0/%ED%96%89%EC%82%AC&choiceTagId=ca662dcd-d7f0-11e8-bff9-02001c6b0001";
 
+require('dotenv').config();
 
 let param = {}; 
 
@@ -21,6 +23,29 @@ let event_data:string[] = new Array(91)
 let region_num:number[] = [ 10,22,65,43,69 ];
 let nature = new Array(38);
 //let mountain = [ 4,6,8,9,13,14,15,17,18,20,21,22,27,29,30,31,34,35,36 ];
+//var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var xhr = new XMLHttpRequest();
+var urldata = 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival'; /*urldata*/
+var queryParams = '?' + encodeURIComponent('ServiceKey') + '='+process.env.SERVICE_KEY; /*Service Key*/
+queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /**/
+queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
+queryParams += '&' + encodeURIComponent('MobileOS') + '=' + encodeURIComponent('ETC'); /**/
+queryParams += '&' + encodeURIComponent('MobileApp') + '=' + encodeURIComponent('AppTest'); /**/
+queryParams += '&' + encodeURIComponent('arrange') + '=' + encodeURIComponent('A'); /**/
+queryParams += '&' + encodeURIComponent('listYN') + '=' + encodeURIComponent('Y'); /**/
+queryParams += '&' + encodeURIComponent('areaCode') + '=' + encodeURIComponent(''); /**/
+queryParams += '&' + encodeURIComponent('sigunguCode') + '=' + encodeURIComponent(''); /**/
+queryParams += '&' + encodeURIComponent('eventStartDate') + '=' + encodeURIComponent('20170901'); /**/
+queryParams += '&' + encodeURIComponent('eventEndDate') + '=' + encodeURIComponent(''); /**/
+queryParams += '&' + encodeURIComponent('modifiedtime') + '=' + encodeURIComponent(''); /**/
+xhr.open('GET', urldata + queryParams);
+xhr.onreadystatechange = function () {
+    if (this.readyState == 4) {
+        console.log('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
+    }
+};
+
+xhr.send('');
 
 const travel = [
   {
