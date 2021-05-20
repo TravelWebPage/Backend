@@ -10,6 +10,14 @@ let request = require('request');
 let url = "http://www.kweather.co.kr/kma/kma_city.html";
 let event_url = "https://korean.visitkorea.or.kr/list/fes_list.do?choiceTag=%EA%B3%B5%EC%97%B0/%ED%96%89%EC%82%AC&choiceTagId=ca662dcd-d7f0-11e8-bff9-02001c6b0001";
 
+const mainpage_region_data:string[] = [
+  '빛의 도시 광주! 인공지능의 중심에 서다! 역사를 숨쉬는 광주로 오세요! 각 구마다 특색있는 관광지들이 있습니다!',
+  '호남의 중심 나주! 하늘과 땅, 바다가 잉태한 것 같은 평야의 나주입니다! 이런 생명의 땅에 오셔서 생명의 문을 보세요!',
+  '사람의 도시, 품격의 전주! 새로운 문화를 열어갈 꽃심의 전주입니다! 전주의 얼과 정신을 한옥마을에 오셔서 느껴보세요!',
+  '대나무의 도시 담양! 환경 친화적인 담양에 오셔서 자연을 느껴보세요!',
+  '기의 도시 영암! 각색있는 월출산과 유적지들에서 경관을 느끼고 과거의 문화를 느껴보세요!'
+]
+
 require('dotenv').config();
 
 let param = {}; 
@@ -17,12 +25,6 @@ let param = {};
 let region:string[] = new Array(91);
 let weather:string[] = new Array(91);
 let tem:string[] = new Array(91);
-let data_cut:string;
-let data:string;
-let event_data:string[] = new Array(91)
-
-let region_num:number[] = [ 10,22,65,43,69 ];
-let nature = new Array(38);
 //let mountain = [ 4,6,8,9,13,14,15,17,18,20,21,22,27,29,30,31,34,35,36 ];
 //var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
@@ -326,21 +328,6 @@ const event = [
 
 ]
 
-/*
-for (let index = 0; index < nature.length; index++) {
-    let flag = 0;
-    let element = nature[index];
-  
-    for (let number = 0; number < mountain.length; number++) {
-      if(index == mountain[number]) {
-      flag = 1;   
-      }
-  
-      if(flag == 1) nature[index] = '산'
-      else nature[index] = '바다';
-    }
-    flag = 0;
-}*/
 
 
 
