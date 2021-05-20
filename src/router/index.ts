@@ -28,45 +28,19 @@ let tem:string[] = new Array(91);
 //let mountain = [ 4,6,8,9,13,14,15,17,18,20,21,22,27,29,30,31,34,35,36 ];
 //var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 let a: any;
-var urldata = 'https://api.odcloud.kr/api/15050620/v1/uddi:dfe38846-3b92-41f3-a146-ba17949b33c5';
-var queryParams = '?' + encodeURIComponent('ServiceKey') +'='+ process.env.SERVICE_KEY; /* Service Key*/
-/*
-queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10');
-queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1');
-queryParams += '&' + encodeURIComponent('MobileOS') + '=' + encodeURIComponent('ETC');
-queryParams += '&' + encodeURIComponent('MobileApp') + '=' + encodeURIComponent('AppTest');
-queryParams += '&' + encodeURIComponent('areaCode') + '=' + encodeURIComponent('1');
-*/
-/*
-queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('5');
-queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1');
-queryParams += '&' + encodeURIComponent('MobileOS') + '=' + encodeURIComponent('ETC');
-queryParams += '&' + encodeURIComponent('MobileApp') + '=' + encodeURIComponent('AppTest');
-queryParams += '&' + encodeURIComponent('arrange') + '=' + encodeURIComponent('O');
-queryParams += '&' + encodeURIComponent('listYN') + '=' + encodeURIComponent('Y'); 
-queryParams += '&' + encodeURIComponent('areaCode') + '=' + encodeURIComponent(''); 
-queryParams += '&' + encodeURIComponent('sigunguCode') + '=' + encodeURIComponent(''); 
-queryParams += '&' + encodeURIComponent('eventStartDate') + '=' + encodeURIComponent('20200101'); 
-queryParams += '&' + encodeURIComponent('eventEndDate') + '=' + encodeURIComponent(''); 
-queryParams += '&' + encodeURIComponent('modifiedtime') + '=' + encodeURIComponent(''); 
-request({
-  url: urldata + queryParams,
-  method: 'GET'
-}, function (error:Error, response:Response, body:Body) {
-  //console.log('Status', response.statusCode);
-  console.log(body);
-  a=body;
-});
-*/
-let urlDataParams =
-"page=1&perPage=10&returnType=json&serviceKey=%2BU0Thp7vu4xIf1%2FbeTDLCfJEM9K0WoCJeBFLwVJ1%2FEClTggRVLWwyHtUVLNIkC836G280F%2FdhgCZOicXV6amLg%3D%3D";
+var urldata = 'https://api.odcloud.kr/api';
+urldata = urldata + '?' + encodeURIComponent('ServiceKey') + '='+process.env.SERVICE_KEY;
+urldata += '&' + encodeURIComponent('page') + '=' +encodeURIComponent('1');
+urldata += '&' + encodeURIComponent('perPage') + '=' +encodeURIComponent('10');
+//let urlDataParams = "page=1&perPage=10&serviceKey=%2BU0Thp7vu4xIf1%2FbeTDLCfJEM9K0WoCJeBFLwVJ1%2FEClTggRVLWwyHtUVLNIkC836G280F%2FdhgCZOicXV6amLg%3D%3D";
   
 request({
-  openurl: urldata + urlDataParams,
+  url: "https://api.odcloud.kr/api/15050620/v1/uddi:dfe38846-3b92-41f3-a146-ba17949b33c5?page=1&perPage=200&serviceKey=%2BU0Thp7vu4xIf1%2FbeTDLCfJEM9K0WoCJeBFLwVJ1%2FEClTggRVLWwyHtUVLNIkC836G280F%2FdhgCZOicXV6amLg%3D%3D",
   method: 'GET'
 }, function (error:Error, response:Response, body:Body) {
   //console.log('Status', response.statusCode);
-  console.log(urldata+urlDataParams);
+  console.log(urldata);
+  console.log(body)
   a=body;
 });
 
@@ -355,8 +329,6 @@ const event = [
 ]
 
 
-
-
 let num = [1,7,9,10,11,13,15,17,19,20,22,23,26,28,30,35,36,38,40,41,42,44,45,48,49,54,55,56,63,64,66,67,70,72,73,74,75,88];
 
 request(url, function (error:Error, response:ResponseType, html:HTMLAreaElement){
@@ -402,12 +374,12 @@ request(url, function (error:Error, response:ResponseType, html:HTMLAreaElement)
 
 index.get('/', function(req:Request, res:Response, next:NextFunction) {
   res.json({travel:travel});
-  //res.send(a)
+  console.log(a)
 });
 
 
 index.get('/postdata/indexpage', function(req:Request, res:Response, next:NextFunction) {
-  res.json({travel:travel});
+  res.json({data:a});
 });
 
   
