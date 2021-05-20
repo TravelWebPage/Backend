@@ -1,4 +1,5 @@
 import axios from "axios";
+import bodyParser from "body-parser";
 import express, { Request, Response, NextFunction } from "express";
 import { XMLHttpRequest } from 'xmlhttprequest-ts';
 
@@ -24,28 +25,22 @@ let region_num:number[] = [ 10,22,65,43,69 ];
 let nature = new Array(38);
 //let mountain = [ 4,6,8,9,13,14,15,17,18,20,21,22,27,29,30,31,34,35,36 ];
 //var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-var xhr = new XMLHttpRequest();
-var urldata = 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival'; /*urldata*/
-var queryParams = '?' + encodeURIComponent('ServiceKey') + '='+process.env.SERVICE_KEY; /*Service Key*/
-queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /**/
-queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
-queryParams += '&' + encodeURIComponent('MobileOS') + '=' + encodeURIComponent('ETC'); /**/
-queryParams += '&' + encodeURIComponent('MobileApp') + '=' + encodeURIComponent('AppTest'); /**/
-queryParams += '&' + encodeURIComponent('arrange') + '=' + encodeURIComponent('A'); /**/
-queryParams += '&' + encodeURIComponent('listYN') + '=' + encodeURIComponent('Y'); /**/
-queryParams += '&' + encodeURIComponent('areaCode') + '=' + encodeURIComponent(''); /**/
-queryParams += '&' + encodeURIComponent('sigunguCode') + '=' + encodeURIComponent(''); /**/
-queryParams += '&' + encodeURIComponent('eventStartDate') + '=' + encodeURIComponent('20170901'); /**/
-queryParams += '&' + encodeURIComponent('eventEndDate') + '=' + encodeURIComponent(''); /**/
-queryParams += '&' + encodeURIComponent('modifiedtime') + '=' + encodeURIComponent(''); /**/
-xhr.open('GET', urldata + queryParams);
-xhr.onreadystatechange = function () {
-    if (this.readyState == 4) {
-        console.log('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
-    }
-};
 
-xhr.send('');
+var urldata = 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode';
+var queryParams = '?' + encodeURIComponent('ServiceKey') +'='+ process.env.SERVICE_KEY; /* Service Key*/
+queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /* */
+queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /* */
+queryParams += '&' + encodeURIComponent('MobileOS') + '=' + encodeURIComponent('ETC'); /* */
+queryParams += '&' + encodeURIComponent('MobileApp') + '=' + encodeURIComponent('AppTest'); /* */
+queryParams += '&' + encodeURIComponent('areaCode') + '=' + encodeURIComponent('1'); /* */
+
+request({
+  url: urldata + queryParams,
+  method: 'GET'
+}, function (error:Error, response:Response, body:Body) {
+  console.log('Status', response.statusCode);
+  console.log('Reponse received', body);
+});
 
 const travel = [
   {
@@ -393,7 +388,8 @@ request(url, function (error:Error, response:ResponseType, html:HTMLAreaElement)
 });
 
 index.get('/', function(req:Request, res:Response, next:NextFunction) {
-  res.json({travel:travel});
+  //res.json({travel:travel});
+
 });
 
 
