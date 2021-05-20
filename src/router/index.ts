@@ -27,21 +27,47 @@ let weather:string[] = new Array(91);
 let tem:string[] = new Array(91);
 //let mountain = [ 4,6,8,9,13,14,15,17,18,20,21,22,27,29,30,31,34,35,36 ];
 //var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-
-var urldata = 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode';
+let a: any;
+var urldata = 'https://api.odcloud.kr/api/15050620/v1/uddi:dfe38846-3b92-41f3-a146-ba17949b33c5';
 var queryParams = '?' + encodeURIComponent('ServiceKey') +'='+ process.env.SERVICE_KEY; /* Service Key*/
-queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /* */
-queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /* */
-queryParams += '&' + encodeURIComponent('MobileOS') + '=' + encodeURIComponent('ETC'); /* */
-queryParams += '&' + encodeURIComponent('MobileApp') + '=' + encodeURIComponent('AppTest'); /* */
-queryParams += '&' + encodeURIComponent('areaCode') + '=' + encodeURIComponent('1'); /* */
-
+/*
+queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10');
+queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1');
+queryParams += '&' + encodeURIComponent('MobileOS') + '=' + encodeURIComponent('ETC');
+queryParams += '&' + encodeURIComponent('MobileApp') + '=' + encodeURIComponent('AppTest');
+queryParams += '&' + encodeURIComponent('areaCode') + '=' + encodeURIComponent('1');
+*/
+/*
+queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('5');
+queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1');
+queryParams += '&' + encodeURIComponent('MobileOS') + '=' + encodeURIComponent('ETC');
+queryParams += '&' + encodeURIComponent('MobileApp') + '=' + encodeURIComponent('AppTest');
+queryParams += '&' + encodeURIComponent('arrange') + '=' + encodeURIComponent('O');
+queryParams += '&' + encodeURIComponent('listYN') + '=' + encodeURIComponent('Y'); 
+queryParams += '&' + encodeURIComponent('areaCode') + '=' + encodeURIComponent(''); 
+queryParams += '&' + encodeURIComponent('sigunguCode') + '=' + encodeURIComponent(''); 
+queryParams += '&' + encodeURIComponent('eventStartDate') + '=' + encodeURIComponent('20200101'); 
+queryParams += '&' + encodeURIComponent('eventEndDate') + '=' + encodeURIComponent(''); 
+queryParams += '&' + encodeURIComponent('modifiedtime') + '=' + encodeURIComponent(''); 
 request({
   url: urldata + queryParams,
   method: 'GET'
 }, function (error:Error, response:Response, body:Body) {
-  console.log('Status', response.statusCode);
-  console.log('Reponse received', body);
+  //console.log('Status', response.statusCode);
+  console.log(body);
+  a=body;
+});
+*/
+let urlDataParams =
+"page=1&perPage=10&returnType=json&serviceKey=%2BU0Thp7vu4xIf1%2FbeTDLCfJEM9K0WoCJeBFLwVJ1%2FEClTggRVLWwyHtUVLNIkC836G280F%2FdhgCZOicXV6amLg%3D%3D";
+  
+request({
+  openurl: urldata + urlDataParams,
+  method: 'GET'
+}, function (error:Error, response:Response, body:Body) {
+  //console.log('Status', response.statusCode);
+  console.log(urldata+urlDataParams);
+  a=body;
 });
 
 const travel = [
@@ -375,8 +401,8 @@ request(url, function (error:Error, response:ResponseType, html:HTMLAreaElement)
 });
 
 index.get('/', function(req:Request, res:Response, next:NextFunction) {
-  //res.json({travel:travel});
-
+  res.json({travel:travel});
+  //res.send(a)
 });
 
 
