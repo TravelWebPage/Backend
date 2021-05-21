@@ -27,7 +27,7 @@ let weather:string[] = new Array(91);
 let tem:string[] = new Array(91);
 //let mountain = [ 4,6,8,9,13,14,15,17,18,20,21,22,27,29,30,31,34,35,36 ];
 //var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-let a: any;
+let a: string[];
 var urldata = 'https://api.odcloud.kr/api';
 urldata = urldata + '?' + encodeURIComponent('ServiceKey') + '='+process.env.SERVICE_KEY;
 urldata += '&' + encodeURIComponent('page') + '=' +encodeURIComponent('1');
@@ -37,12 +37,22 @@ urldata += '&' + encodeURIComponent('perPage') + '=' +encodeURIComponent('10');
 request({
   url: "https://api.odcloud.kr/api/15050620/v1/uddi:dfe38846-3b92-41f3-a146-ba17949b33c5?page=1&perPage=200&serviceKey=%2BU0Thp7vu4xIf1%2FbeTDLCfJEM9K0WoCJeBFLwVJ1%2FEClTggRVLWwyHtUVLNIkC836G280F%2FdhgCZOicXV6amLg%3D%3D",
   method: 'GET'
-}, function (error:Error, response:Response, body:Body) {
+}, function (error:Error, response:Response, body:any) {
   //console.log('Status', response.statusCode);
   console.log(urldata);
   console.log(body)
-  a=body;
+  a=body.split(',');
+  a.shift()
+  // 1,4,5,6,7,8,9,10,1114,15,16,17,19,20,21,22
+  for (let i = 0; i < 200; i++) {
+    a.splice(1*i,1);
+    a.splice(4*i,8);
+    a.splice(14*i,4);
+    a.splice(19*i,4);
+  }
+  
 });
+
 
 const travel = [
   {
@@ -371,6 +381,7 @@ request(url, function (error:Error, response:ResponseType, html:HTMLAreaElement)
   });
   //console.log(weather);
 });
+
 
 index.get('/', function(req:Request, res:Response, next:NextFunction) {
   res.json({travel:travel});
