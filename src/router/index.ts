@@ -44,11 +44,12 @@ request({
   a=body.split(',');
   a.shift()
   // 1,4,5,6,7,8,9,10,1114,15,16,17,19,20,21,22
-  for (let i = 0; i < 200; i++) {
-    a.splice(1*i,1);
-    a.splice(4*i,8);
-    a.splice(14*i,4);
-    a.splice(19*i,4);
+  for (let i = 0; i < a.length; i++) {
+    // a.splice(1*i,1);
+    // a.splice(4*i,8);
+    // a.splice(14*i,4);
+    // a.splice(19*i,4);
+    console.log("i 번째: "+a[i]);
   }
   
 });
