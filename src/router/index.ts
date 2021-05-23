@@ -35,12 +35,10 @@ urldata += '&' + encodeURIComponent('perPage') + '=' +encodeURIComponent('10');
 //let urlDataParams = "page=1&perPage=10&serviceKey=%2BU0Thp7vu4xIf1%2FbeTDLCfJEM9K0WoCJeBFLwVJ1%2FEClTggRVLWwyHtUVLNIkC836G280F%2FdhgCZOicXV6amLg%3D%3D";
   
 request({
+  //url data 추가시키게 바꾸기
   url: "https://api.odcloud.kr/api/15050620/v1/uddi:dfe38846-3b92-41f3-a146-ba17949b33c5?page=1&perPage=200&serviceKey=%2BU0Thp7vu4xIf1%2FbeTDLCfJEM9K0WoCJeBFLwVJ1%2FEClTggRVLWwyHtUVLNIkC836G280F%2FdhgCZOicXV6amLg%3D%3D",
   method: 'GET'
 }, function (error:Error, response:Response, body:any) {
-  //console.log('Status', response.statusCode);
-  console.log(urldata);
-  console.log(body)
   a=body.split(',');
   a.shift()
   // 1,4,5,6,7,8,9,10,1114,15,16,17,19,20,21,22
