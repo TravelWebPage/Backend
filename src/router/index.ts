@@ -1,7 +1,4 @@
-import axios from "axios";
-import bodyParser from "body-parser";
 import express, { Request, Response, NextFunction } from "express";
-import { XMLHttpRequest } from 'xmlhttprequest-ts';
 
 const index = express.Router();
 
@@ -22,15 +19,15 @@ require('dotenv').config();
 
 let param = {}; 
 
-let event_name:string[];
-let event_explain:string[];
-let event_where:string[];
+let s_event_name:string[] = new Array(18)
+let s_event_explain:string[]= new Array(18);
+let s_event_where:string[]= new Array(18);
+let s_event_img:string[] = new Array(18); 
 
 let region:string[] = new Array(91);
 let weather:string[] = new Array(91);
 let tem:string[] = new Array(91);
-//let mountain = [ 4,6,8,9,13,14,15,17,18,20,21,22,27,29,30,31,34,35,36 ];
-//var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
 let a:string[];
 let event_data;
 var urldata = 'https://api.odcloud.kr/api';
@@ -48,17 +45,6 @@ request({
 }, function (error:Error, response:Response, body:any) {
   a=body.split(',');
   a.shift();
-  //event_data.push()
-  // 1,4,5,6,7,8,9,10,1114,15,16,17,19,20,21,22
-  /*
-  for (let i = 0; i < a.length; i++) {
-    // a.splice(1*i,1);
-    // a.splice(4*i,8);
-    // a.splice(14*i,4);
-    // a.splice(19*i,4);
-    console.log(i+"번째: "+a[i]);
-  }*/
-  //console.log(event_data)
 });
 
 
@@ -392,31 +378,37 @@ request(url, function (error:Error, response:ResponseType, html:HTMLAreaElement)
 
 request(south_festival, function (error:Error, response:ResponseType, html:HTMLAreaElement){
   var $ = cheerio.load(html);
-  for (let i = 0; i < 18; i++) {
-    
+  for (let i = 0; i < 30; i++) {
+    s_event_name[i] = $(`#listForm > ul > li:nth-child(${i}) > a > dl > dt`).text();
+    s_event_explain[i] = $(`#listForm > ul > li:nth-child(${i}) > a > dl > dd > p`).text();
+    s_event_where[i] = $(`#listForm > ul > li:nth-child(${i}) > a > dl > dd > strong`).text();
+    s_event_img[i] = $(`#listForm > ul > li:nth-child(${i}) > a > img`).attr('src')
   }
-  s_event_name = $(`#listForm > ul > li:nth-child(1) > a > dl > dt`).text();
-  event_explain = $(`#listForm > ul > li:nth-child(1) > a > dl > dd > p`).text();
-  event_where = $(`#listForm > ul > li:nth-child(1) > a > dl > dd > strong`).text();
+  s_event_name = s_event_name.filter(function(item) {
+    return item !== undefined && item !== "";
+  });
+  s_event_explain = s_event_explain.filter(function(item) {
+    return item !== undefined && item !== "";
+  });
+  s_event_where = s_event_where.filter(function(item) {
+    return item !== undefined && item !== "";
+  });
+  s_event_img = s_event_img.filter(function(item) {
+    return item !== undefined && item !== "";
+  });
 });
 
-request(north_festival, function (error:Error, response:ResponseType, html:HTMLAreaElement){
-  var $ = cheerio.load(html);
-  for (let i = 0; i < 18; i++) {
-    
-  }
-  n_event_name = $(`#listForm > ul > li:nth-child(1) > a > dl > dt`).text();
-  event_explain = $(`#listForm > ul > li:nth-child(1) > a > dl > dd > p`).text();
-  event_where = $(`#listForm > ul > li:nth-child(1) > a > dl > dd > strong`).text();
-});
-
+for (let i = 0; i < s_event_where.length; i++) {
+  s_event_where[i] = s_event_where.slice(s_event_where[i].indexOf(']'),s_event_where[i].indexOf(']')+2)
+}
 
 index.get('/', function(req:Request, res:Response, next:NextFunction) {
   res.json({travel:travel});
 });
 
 index.get('/asdf', function(req:Request, res:Response, next:NextFunction) {
-  res.json({event_explain:event_explain,s_event_name:s_event_name,event_where:event_where});
+  res.json({s_event_explain:s_event_explain,s_event_name:s_event_name,s_event_where:s_event_where,s_event_img:s_event_img});
+  console.log(s_event_where)
 });
 
 
