@@ -22,6 +22,10 @@ require('dotenv').config();
 
 let param = {}; 
 
+let event_name:string[];
+let event_explain:string[];
+let event_where:string[];
+
 let region:string[] = new Array(91);
 let weather:string[] = new Array(91);
 let tem:string[] = new Array(91);
@@ -30,6 +34,8 @@ let tem:string[] = new Array(91);
 let a:string[];
 let event_data;
 var urldata = 'https://api.odcloud.kr/api';
+let south_festival = 'https://api.visitkorea.or.kr/search/commonList.do'
+let north_festival = 'https://api.visitkorea.or.kr/search/commonList.do'
 urldata = urldata + '?' + encodeURIComponent('ServiceKey') + '='+process.env.SERVICE_KEY;
 urldata += '&' + encodeURIComponent('page') + '=' +encodeURIComponent('1');
 urldata += '&' + encodeURIComponent('perPage') + '=' +encodeURIComponent('10');
@@ -42,17 +48,17 @@ request({
 }, function (error:Error, response:Response, body:any) {
   a=body.split(',');
   a.shift();
-  event_data.push()
+  //event_data.push()
   // 1,4,5,6,7,8,9,10,1114,15,16,17,19,20,21,22
   /*
-  for (let i = 0; i < 200; i++) {
+  for (let i = 0; i < a.length; i++) {
     // a.splice(1*i,1);
     // a.splice(4*i,8);
     // a.splice(14*i,4);
     // a.splice(19*i,4);
     console.log(i+"번째: "+a[i]);
   }*/
-  console.log(event_data)
+  //console.log(event_data)
 });
 
 
@@ -384,11 +390,35 @@ request(url, function (error:Error, response:ResponseType, html:HTMLAreaElement)
   //console.log(weather);
 });
 
+request(south_festival, function (error:Error, response:ResponseType, html:HTMLAreaElement){
+  var $ = cheerio.load(html);
+  for (let i = 0; i < 18; i++) {
+    
+  }
+  s_event_name = $(`#listForm > ul > li:nth-child(1) > a > dl > dt`).text();
+  event_explain = $(`#listForm > ul > li:nth-child(1) > a > dl > dd > p`).text();
+  event_where = $(`#listForm > ul > li:nth-child(1) > a > dl > dd > strong`).text();
+});
+
+request(north_festival, function (error:Error, response:ResponseType, html:HTMLAreaElement){
+  var $ = cheerio.load(html);
+  for (let i = 0; i < 18; i++) {
+    
+  }
+  n_event_name = $(`#listForm > ul > li:nth-child(1) > a > dl > dt`).text();
+  event_explain = $(`#listForm > ul > li:nth-child(1) > a > dl > dd > p`).text();
+  event_where = $(`#listForm > ul > li:nth-child(1) > a > dl > dd > strong`).text();
+});
+
 
 index.get('/', function(req:Request, res:Response, next:NextFunction) {
   res.json({travel:travel});
-  console.log(a)
 });
+
+index.get('/asdf', function(req:Request, res:Response, next:NextFunction) {
+  res.json({event_explain:event_explain,s_event_name:s_event_name,event_where:event_where});
+});
+
 
 
 index.get('/postdata/indexpage', function(req:Request, res:Response, next:NextFunction) {
