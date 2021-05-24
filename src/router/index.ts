@@ -27,7 +27,8 @@ let weather:string[] = new Array(91);
 let tem:string[] = new Array(91);
 //let mountain = [ 4,6,8,9,13,14,15,17,18,20,21,22,27,29,30,31,34,35,36 ];
 //var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-let a: string[];
+let a:string[];
+let event_data;
 var urldata = 'https://api.odcloud.kr/api';
 urldata = urldata + '?' + encodeURIComponent('ServiceKey') + '='+process.env.SERVICE_KEY;
 urldata += '&' + encodeURIComponent('page') + '=' +encodeURIComponent('1');
@@ -40,16 +41,18 @@ request({
   method: 'GET'
 }, function (error:Error, response:Response, body:any) {
   a=body.split(',');
-  a.shift()
+  a.shift();
+  event_data.push()
   // 1,4,5,6,7,8,9,10,1114,15,16,17,19,20,21,22
-  for (let i = 0; i < a.length; i++) {
+  /*
+  for (let i = 0; i < 200; i++) {
     // a.splice(1*i,1);
     // a.splice(4*i,8);
     // a.splice(14*i,4);
     // a.splice(19*i,4);
-    console.log("i 번째: "+a[i]);
-  }
-  
+    console.log(i+"번째: "+a[i]);
+  }*/
+  console.log(event_data)
 });
 
 
