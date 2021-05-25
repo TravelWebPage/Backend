@@ -18,7 +18,7 @@ const mainpage_region_data:string[] = [
 require('dotenv').config();
 
 let param = {}; 
-let arr_num:number = 18;
+let arr_num:number = 30;
 let s_event_name:string[] = new Array(arr_num)
 let s_event_explain:string[]= new Array(arr_num);
 let s_event_where:string[]= new Array(arr_num);
@@ -58,7 +58,7 @@ const travel = [
   },
   {
     where: '펭귄마을',
-    url:'https://t1.daumcdn.net/cfile/tistory/996049335A01C54808',
+    url:'https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile25.uf.tistory.com%2Fimage%2F997039505B5499850EF100',
     envir: '좋',
     explain: '전남 광주 양림동은 과거로 떠나는 타임머신 여행지다. 광주 근현대사 여행지로 인기가 높은 이곳엔 옛 추억을 불러일으키는 또 다른 시간 여행지가 있다. 이름도 재밌는 펭귄마을. 비록 펭귄은 살지 않지만 그보다 더 눈길을 끄는 잡다한 볼거리들이 가득하다. 시간 여행 속 색다른 여행지로 떠오르는 곳이다.',
   },
@@ -379,7 +379,7 @@ request(url, function (error:Error, response:ResponseType, html:HTMLAreaElement)
 
 request(south_festival, function (error:Error, response:ResponseType, html:HTMLAreaElement){
   var $ = cheerio.load(html);
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < arr_num; i++) {
     s_event_name[i] = $(`#listForm > ul > li:nth-child(${i}) > a > dl > dt`).text();
     s_event_explain[i] = $(`#listForm > ul > li:nth-child(${i}) > a > dl > dd > p`).text();
     s_event_where[i] = $(`#listForm > ul > li:nth-child(${i}) > a > dl > dd > strong`).text();
@@ -402,11 +402,6 @@ request(south_festival, function (error:Error, response:ResponseType, html:HTMLA
   }
   console.log(s_event_where)
 });
-/*
-for (let i = 0; i < s_event_where.length; i++) {
-  s_event_where[i] = s_event_where[s_event_where.indexOf(']')]+s_event_where[s_event_where[i].indexOf(']')+1]+s_event_where[s_event_where[i].indexOf(']')+2]
-}
-*/
 
 
 index.get('/', function(req:Request, res:Response, next:NextFunction) {
