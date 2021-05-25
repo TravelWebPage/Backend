@@ -18,11 +18,12 @@ const mainpage_region_data:string[] = [
 require('dotenv').config();
 
 let param = {}; 
-
-let s_event_name:string[] = new Array(18)
-let s_event_explain:string[]= new Array(18);
-let s_event_where:string[]= new Array(18);
-let s_event_img:string[] = new Array(18); 
+let arr_num:number = 18;
+let s_event_name:string[] = new Array(arr_num)
+let s_event_explain:string[]= new Array(arr_num);
+let s_event_where:string[]= new Array(arr_num);
+let two_s_event_where = new Array(arr_num);
+let s_event_img:string[] = new Array(arr_num); 
 
 let region:string[] = new Array(91);
 let weather:string[] = new Array(91);
@@ -396,11 +397,17 @@ request(south_festival, function (error:Error, response:ResponseType, html:HTMLA
   s_event_img = s_event_img.filter(function(item) {
     return item !== undefined && item !== "";
   });
+  for (let i = 0; i < s_event_where.length; i++) {
+    s_event_where[i] = s_event_where[i][s_event_where[i].indexOf(']')+1]+s_event_where[i][s_event_where[i].indexOf(']')+2]+s_event_where[i][s_event_where[i].indexOf(']')+3];
+  }
+  console.log(s_event_where)
 });
-
+/*
 for (let i = 0; i < s_event_where.length; i++) {
-  s_event_where[i] = s_event_where.slice(s_event_where[i].indexOf(']'),s_event_where[i].indexOf(']')+2)
+  s_event_where[i] = s_event_where[s_event_where.indexOf(']')]+s_event_where[s_event_where[i].indexOf(']')+1]+s_event_where[s_event_where[i].indexOf(']')+2]
 }
+*/
+
 
 index.get('/', function(req:Request, res:Response, next:NextFunction) {
   res.json({travel:travel});
