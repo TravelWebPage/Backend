@@ -200,19 +200,27 @@ const region_data = [
   {
     character: "빛의 도시 광주로 놀러오세요!",
     context: "면적 501.18㎢, 인구 1,482,151명으로 북동쪽으로 담양군, 북쪽으로 장성군, 서쪽으로 함평군, 남쪽으로 나주시, 남동쪽으로 화순군에 접한다. 서울·부산·대구·인천에 이어 국내 제6위를 차지하는 대도시",
-    tour:"대표적인 관광지는 광주를 지키는 산인 무등산국립공원은 신선한 공기를 느끼고 특색있는 거리인 예술의 거리나 ㅁㄴㅇㄹ!"
+    tour:"대표적인 관광지는 광주를 지키는 산인 무등산국립공원은 신선한 공기를 느끼고 특색있는 거리인 예술의 거리나 옛날풍의 펭귄마을에 오세요~~!"
   },
   {
-    //나
+    character: "호남의 중심 나주로 오세요!",
+    context: "총면적 608.15㎢ 로 우리나라 4대강의 하나인 영산강이 시가지를 관통하여 지세를 남북으로 양분하고 있고 동으로 화순군, 서로는 함평군과 무안군, 남으로 영암군,북으로는 광주광역시와 경계를 이루고 있다.",
+    tour:"나주 관청에 들러서 나주의 과거를 느끼고 나주에서 나오는 배는 정말 맛있습니다! 생명의 문은 나주 랜드마크입니다!"
   },
   {
-    //전
+    character: "한옥의 마을 전주로 놀러오세요!",
+    context: "면적은 206.22㎢, 연평균 기온 13.3℃, 연강수량 1313.1㎜, 행정구역은 2구 35개동으로 구성되어있다. 한옥 마을들이 유명한 도시다.",
+    tour:"전주하면 떠오르는 한옥마을은 한옥 건물만 보는 것이 아닌 유서깊은 건물들도 유의해서 봐주시면 됩니다! 매년마다 천만명 이상이 다녀가는 곳입니다!"
   },
   {
-    //담
+    character: "대나무가 유명한 담양으로 오세요!",
+    context: "면 적은 455.09㎢, 전남의 3.7%로, 인구 47,526명이다. 전국 유일의 죽제품 특산단지와 하늘이 보이지 않는 메타세콰이어 가로수길이 있는 고장입니다.",
+    tour:"굳음은 진실과 덕을, 곧음은 입신을, 죽심공은 도를, 마디가 곧게 맺어있음은 입지를 뜻합니다. 전국에서 가장 많고 질이 좋은 죽립과 그 죽세공예품은 특산물로 담양군을 대표하는 대나무가 있습니다."
   },
   {
-    //영
+    character: "기의 고장 영암으로 놀러오세요!",
+    context: "면적 612.5㎢, 인구 53,966명으로 임야 36.9%, 경지 36.2%, 기타 26.9%이다. 서울·부산·대구·인천에 이어 국내 제6위를 차지하는 대도시",
+    tour:"구름다리에서 환상적인 경관이 펼쳐진다. 수없이 엉켜 서 있는 바위들을 수시로 뒤돌아보는 일을 게을리하지 말고 눈과 귀를 열어 두어야 한다. 폭포 바로 위에는 바람재라는 푯말이 나온다. 이곳에 서면 월출산 최고의 바위 전시장인 광암터의 경관이 한눈에 들어온다."
   }
 ]
 
@@ -282,7 +290,6 @@ request(south_festival, function (error:Error, response:ResponseType, html:HTMLA
   for (let i = 0; i < s_event_where.length; i++) {
     two_s_event_where[i] = s_event_where[i][s_event_where[i].indexOf(']')+1]+s_event_where[i][s_event_where[i].indexOf(']')+2]+s_event_where[i][s_event_where[i].indexOf(']')+3];
   }
-  console.log(s_event_where)
 });
 
 
@@ -301,6 +308,10 @@ index.get('/postdata/region_data', function(req:Request, res:Response, next:Next
 
 index.get('/postdata/indexpage', function(req:Request, res:Response, next:NextFunction) {
   res.json({data:a});
+});
+
+index.get('/postdata/region_explain', function(req:Request, res:Response, next:NextFunction) {
+  res.json({data:region_data});
 });
 
   
