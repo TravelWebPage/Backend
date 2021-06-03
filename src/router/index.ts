@@ -299,7 +299,7 @@ index.get('/', function(req:Request, res:Response, next:NextFunction) {
 
 index.get('/asdf', function(req:Request, res:Response, next:NextFunction) {
   res.json({s_event_explain:s_event_explain,s_event_name:s_event_name,s_event_where:s_event_where,s_event_img:s_event_img,two_s_event_where:two_s_event_where});
-  console.log(s_event_where)
+  //console.log(s_event_where)
 });
 
 index.get('/postdata/region_data', function(req:Request, res:Response, next:NextFunction) {
